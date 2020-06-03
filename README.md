@@ -12,6 +12,17 @@ After you clone this repository, fetch the code from the submodules by running
 ## Documentation
 Documentation can be found on : https://jvk.gitlab.io/plotj/
 
+## Example
+Using this code:
+
+```Matlab
+[fHandle, fSet] = plotj_initFig('width',25, 'height',15); % Initialising a figure 
+subplot(1,1) % specify subplot
+[axH] = plotj_initAx(fSet, 'axlabel', 1); % initialise axis with label 'a'
+
+% then plot something nice
+```
+
 ## Dependencies
 
 ## Licence

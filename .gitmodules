@@ -4,3 +4,6 @@
 [submodule "src/modules/plotboxpos"]
 	path = src/modules/plotboxpos
 	url = https://github.com/kakearney/plotboxpos-pkg.git
+[submodule "src/modules/export_fig"]
+	path = src/modules/export_fig
+	url = https://github.com/altmany/export_fig.git

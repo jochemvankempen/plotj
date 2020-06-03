@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>scripts &mdash; preprocess 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to plotj’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> preprocess
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">scripts</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">preprocess</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>scripts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/scripts.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scripts">
+<h1>scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h1>
+<dl class="mat function">
+<dt id="plotj.scripts.plotj_cfg">
+<code class="sig-prename descclassname">plotj.scripts.</code><code class="sig-name descname">plotj_cfg</code><span class="sig-paren">(</span><em class="sig-param">cfg</em><span class="sig-paren">)</span><a class="headerlink" href="#plotj.scripts.plotj_cfg" title="Permalink to this definition">¶</a></dt>
+<dd><p>set default settings for plots</p>
+</dd></dl>
+
+<dl class="mat function">
+<dt id="plotj.scripts.plotj_getVarargin">
+<code class="sig-prename descclassname">plotj.scripts.</code><code class="sig-name descname">plotj_getVarargin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plotj.scripts.plotj_getVarargin" title="Permalink to this definition">¶</a></dt>
+<dd><p>unpack varargin into separate variables</p>
+</dd></dl>
+
+<dl class="mat function">
+<dt id="plotj.scripts.plotj_initAx">
+<code class="sig-prename descclassname">plotj.scripts.</code><code class="sig-name descname">plotj_initAx</code><span class="sig-paren">(</span><em class="sig-param">cfg</em>, <em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#plotj.scripts.plotj_initAx" title="Permalink to this definition">¶</a></dt>
+<dd><p>[axHandle] = plotj_initAx(cfg, varargin)</p>
+<p>initialises axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg</strong> (<em>struct</em>) – struct with settings for figure/axes, obtained in plotj_initFig</p></li>
+<li><p><strong>varargin</strong> (<em>cell, with options:</em>) – <ul>
+<li><p>width:       width of figure (default 25), in centimeters.</p></li>
+<li><p>height:      see width (default 20)</p></li>
+<li><p>margin:      margin of page that is kept clear</p></li>
+<li><p>axlabel:     axis label, either string or numeric (integer indicating place in alphabet (e.g. 3 = c)</p></li>
+<li><p>axlabelDisplacement: displacement (x/y position away from axis)</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>axHandle</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>axis handle</p>
+</dd>
+</dl>
+<p>Dependencies:
+- plotj_panelLabel</p>
+<p>Jochem van Kempen, 2017</p>
+</dd></dl>
+
+<dl class="mat function">
+<dt id="plotj.scripts.plotj_initFig">
+<code class="sig-prename descclassname">plotj.scripts.</code><code class="sig-name descname">plotj_initFig</code><span class="sig-paren">(</span><em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#plotj.scripts.plotj_initFig" title="Permalink to this definition">¶</a></dt>
+<dd><p>[figHandle, figSet] = plotj_initFig(varargin);</p>
+<p>initialises figure</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>varargin</strong> (<em>cell</em>) – <p>cell with options ( for all options see _plotj_getVarargin ) :</p>
+<ul class="simple">
+<li><p>figNum:      number the figure will have (default is 1)</p></li>
+<li><p>figureType:  ‘Manuscript’ (default), ‘Poster’ (will lead to different font sizes and line width, etc.)</p></li>
+<li><p>width:       width of figure (default 25), in centimeters.</p></li>
+<li><p>height:      see width (default 20)</p></li>
+<li><p>margin:      margin of page that is kept clear</p></li>
+<li><p>axlabel:     axis label, either string or numeric (integer indicating place in alphabet (e.g. 3 = c)</p></li>
+<li><p>axlabelDisplacement: displacement (x/y position away from axis)</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>fighandle</strong> (<em>figure handle</em>) – handle to figure with all settings defined in plotj_cfg</p></li>
+<li><p><strong>figSet</strong> (<em>struct</em>) – struct with settings, e.g. linewidth, fontsize, etc</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">figHandle</span><span class="p">,</span> <span class="n">figSet</span><span class="p">]</span> <span class="p">=</span> <span class="n">plotj_initFig</span><span class="p">(</span><span class="s">&#39;height&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s">&#39;width&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Jochem van Kempen, 2017</p>
+</dd></dl>
+
+<dl class="mat function">
+<dt id="plotj.scripts.plotj_panelLabel">
+<code class="sig-prename descclassname">plotj.scripts.</code><code class="sig-name descname">plotj_panelLabel</code><span class="sig-paren">(</span><em class="sig-param">axHandle</em>, <em class="sig-param">label</em>, <em class="sig-param">cfg</em>, <em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#plotj.scripts.plotj_panelLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot label for figure panel, e.g. Figure 1A. Called in plotj_initAx</p>
+<p>Dependencies:
+- plotboxpos</p>
+</dd></dl>
+
+<dl class="mat function">
+<dt id="plotj.scripts.plotj_saveFig">
+<code class="sig-prename descclassname">plotj.scripts.</code><code class="sig-name descname">plotj_saveFig</code><span class="sig-paren">(</span><em class="sig-param">figName</em>, <em class="sig-param">figFiletype</em>, <em class="sig-param">figHandle</em><span class="sig-paren">)</span><a class="headerlink" href="#plotj.scripts.plotj_saveFig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves figure</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to plotj’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Jochem van Kempen
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

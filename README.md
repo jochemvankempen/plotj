@@ -16,11 +16,35 @@ Documentation can be found on : https://jvk.gitlab.io/plotj/
 Using this code:
 
 ```Matlab
-[fHandle, fSet] = plotj_initFig('width',25, 'height',15); % Initialising a figure 
-subplot(1,1) % specify subplot
+
+[fHandle, fSet] = plotj_initFig('width',25, 'height',15); % initialise a figure 
+
+% create a plot
+subplot(1, 2, 1) % specify subplot
 [axH] = plotj_initAx(fSet, 'axlabel', 1); % initialise axis with label 'a'
 
-% then plot something nice
+x = linspace(0, 2*pi, 100); % get some x-values
+y = sin(x); % get some y-values
+
+plot(x, y, 'LineWidth', fSet.LineWidth)
+
+title('Line plot', 'FontSize', fSet.Fontsize_title)
+xlabel('x-label', 'FontSize', fSet.Fontsize_ax)
+ylabel('y-label', 'FontSize', fSet.Fontsize_ax)
+
+subplot(1, 2, 2) % specify subplot
+[axH] = plotj_initAx(fSet, 'axlabel', 2); % initialise axis with label 'a'
+
+x = randn(100, 1); % get some x-values
+y = randn(100, 1); % get some y-values
+
+plot(x, y, '.', 'MarkerSize', fSet.MarkerSize, 'Color', fSet.colors(2,:) )
+h = lsline;
+h.Color = fSet.colors(4,:);
+
+title('Scatter plot', 'FontSize', fSet.Fontsize_title)
+xlabel('x-label', 'FontSize', fSet.Fontsize_ax)
+ylabel('y-label', 'FontSize', fSet.Fontsize_ax)
 ```
 
 ## Dependencies

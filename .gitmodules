@@ -1,0 +1,6 @@
+[submodule "src/modules/boundedline"]
+	path = src/modules/boundedline
+	url = https://github.com/kakearney/boundedline-pkg.git
+[submodule "src/modules/plotboxpos"]
+	path = src/modules/plotboxpos
+	url = https://github.com/kakearney/plotboxpos-pkg.git

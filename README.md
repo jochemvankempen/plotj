@@ -18,7 +18,7 @@ Documentation can be found on : https://jvk.gitlab.io/plotj/
 ## Example
 Using this code:
 
-```Matlab
+```matlab
 
 [fHandle, fSet] = plotj_initFig('width',25, 'height',15); % initialise a figure 
 

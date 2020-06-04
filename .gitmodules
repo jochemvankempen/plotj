@@ -7,3 +7,6 @@
 [submodule "src/modules/export_fig"]
 	path = src/modules/export_fig
 	url = https://github.com/altmany/export_fig.git
+[submodule "src/modules/sigstar"]
+	path = src/modules/sigstar
+	url = https://github.com/raacampbell/sigstar.git

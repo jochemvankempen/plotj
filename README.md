@@ -4,8 +4,10 @@ This repository contains some functions used for plotting in Matlab
 This repository contains several folders which are independent repositories, here added as [submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 
 * ../*plotj*/src/modules/[boundedline](https://github.com/kakearney/boundedline-pkg)
-* ../*plotj*/src/modules/[plotboxpos](https://github.com/kakearney/plotboxpos-pkg)
 * ../*plotj*/src/modules/[export_fig](https://github.com/altmany/export_fig.git)
+* ../*plotj*/src/modules/[plotboxpos](https://github.com/kakearney/plotboxpos-pkg)
+* ../*plotj*/src/modules/[sigstar](https://github.com/raacampbell/sigstar.git)
+
 
 After you clone this repository, fetch the code from the submodules by running 
 `git submodule update --init --recursive`

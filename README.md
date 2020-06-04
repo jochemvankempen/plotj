@@ -36,7 +36,7 @@ xlabel('x-label', 'FontSize', fSet.Fontsize_ax)
 ylabel('y-label', 'FontSize', fSet.Fontsize_ax)
 
 subplot(1, 2, 2) % specify subplot
-[axH] = plotj_initAx(fSet, 'axlabel', 2); % initialise axis with label 'a'
+[axH] = plotj_initAx(fSet, 'axlabel', 2); % initialise axis with label 'b'
 
 x = randn(100, 1); % get some x-values
 y = randn(100, 1); % get some y-values

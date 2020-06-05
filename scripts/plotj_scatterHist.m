@@ -1,4 +1,4 @@
-function h = plotj_scatterHist(data, varargin)
+function h = plotj_scatterHist(data, fSet, varargin)
 % plots scatterplot with histogram along axes
 % [h] = plots_scatterHist(data, varargin)
 %
@@ -6,6 +6,8 @@ function h = plotj_scatterHist(data, varargin)
 % ----------
 % data : array
 %     array of size (n x 2)
+% fSet : struct
+%     structure with figure settings, from _plotj_initFig
 % varargin : cell 
 %     cell array with options:
 % 
@@ -96,7 +98,7 @@ axhist1 = axes('Position',pos,...
 %         axhist1.XLim = [XLIM];
 %         axhist1.YLim = [YLIM];
 %         linkaxes([parent axhist1],'x');
-figInit('ax');
+plotj_initAx(fSet);
 
 %         axhist1.Position = axhist1.Position + [0 (axhist1.Position(4) + histoffset) 0 0];
 axhist1.Position(2) = axhist1.Position(2) + (pos(4) + histoffset);
@@ -118,7 +120,7 @@ axhist2 = axes('Position',get(parent,'Position'),...
 %         axhist2.YLim = [YLIM];
 %         axhist2.XLim = [XLIM];
 % linkaxes([parent axhist2],'y');
-figInit('ax');
+plotj_initAx(fSet);
 
 %         axhist2.Position = axhist2.Position + [(axhist2.Position(3) + histoffset) 0 0 0];
 %         axhist2.Position = axhist2.Position + [(axhist2.Position(3) - histoffset) 0 0 0];

@@ -6,6 +6,7 @@ This repository contains several folders which are independent repositories, her
 * ../*plotj*/src/modules/[boundedline](https://github.com/kakearney/boundedline-pkg)
 * ../*plotj*/src/modules/[export_fig](https://github.com/altmany/export_fig.git)
 * ../*plotj*/src/modules/[plotboxpos](https://github.com/kakearney/plotboxpos-pkg)
+* ../*plotj*/src/modules/[scalebar](https://github.com/chenxinfeng4/scalebar.git)
 * ../*plotj*/src/modules/[sigstar](https://github.com/raacampbell/sigstar.git)
 
 

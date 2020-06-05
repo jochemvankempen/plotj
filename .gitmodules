@@ -10,3 +10,6 @@
 [submodule "src/modules/sigstar"]
 	path = src/modules/sigstar
 	url = https://github.com/raacampbell/sigstar.git
+[submodule "src/modules/scalebar"]
+	path = src/modules/scalebar
+	url = https://github.com/chenxinfeng4/scalebar.git

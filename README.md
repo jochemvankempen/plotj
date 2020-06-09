@@ -53,7 +53,7 @@ ylabel('y-label', 'FontSize', fSet.Fontsize_ax)
 
 % create a histogram
 subplot(1, 3, 3) % specify subplot
-[axH] = plotj_initAx(fSet, 'axlabel', 3); % initialise axis with label 'b'
+[axH] = plotj_initAx(fSet, 'axlabel', 3); % initialise axis with label 'c'
 hold on 
 
 n{1} = randn(100, 1)+5; % get some random values

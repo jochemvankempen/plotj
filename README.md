@@ -21,10 +21,10 @@ Using this code:
 
 ```matlab
 
-[fHandle, fSet] = plotj_initFig('width',25, 'height',15); % initialise a figure 
+[fHandle, fSet] = plotj_initFig('width',25, 'height',8); % initialise a figure 
 
-% create a plot
-subplot(1, 2, 1) % specify subplot
+% create a plot of a time series
+subplot(1, 3, 1) % specify subplot
 [axH] = plotj_initAx(fSet, 'axlabel', 1); % initialise axis with label 'a'
 
 x = linspace(0, 2*pi, 100); % get some x-values
@@ -36,7 +36,8 @@ title('Line plot', 'FontSize', fSet.Fontsize_title)
 xlabel('x-label', 'FontSize', fSet.Fontsize_ax)
 ylabel('y-label', 'FontSize', fSet.Fontsize_ax)
 
-subplot(1, 2, 2) % specify subplot
+% create a scatter plot
+subplot(1, 3, 2) % specify subplot
 [axH] = plotj_initAx(fSet, 'axlabel', 2); % initialise axis with label 'b'
 
 x = randn(100, 1); % get some x-values
@@ -47,6 +48,26 @@ h = lsline;
 h.Color = fSet.colors(4,:);
 
 title('Scatter plot', 'FontSize', fSet.Fontsize_title)
+xlabel('x-label', 'FontSize', fSet.Fontsize_ax)
+ylabel('y-label', 'FontSize', fSet.Fontsize_ax)
+
+% create a histogram
+subplot(1, 3, 3) % specify subplot
+[axH] = plotj_initAx(fSet, 'axlabel', 3); % initialise axis with label 'b'
+hold on 
+
+n{1} = randn(100, 1)+5; % get some random values
+n{2} = randn(120, 1)+1; % get some random values, not necessarily the same number
+
+% plot histogram
+h = plotj_hist(n, ...
+    'NA_action', 'omit', ...
+    'Color', fSet.colors(1:length(n),:), ...
+    'LineWidth', fSet.LineWidth, ...
+    'nbins', 30, ...
+    'histStyle', 'stairs');
+
+title('Histogram', 'FontSize', fSet.Fontsize_title)
 xlabel('x-label', 'FontSize', fSet.Fontsize_ax)
 ylabel('y-label', 'FontSize', fSet.Fontsize_ax)
 ```

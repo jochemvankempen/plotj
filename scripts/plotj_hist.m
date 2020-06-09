@@ -8,6 +8,7 @@ function h = plotj_hist(indata, varargin)
 %     array of size (n x nColumns), or cell array
 % varargin, cell with options :
 % 
+%    - histStyle:    string with style of histogram: 'stairs' (default) or 'bar'
 %    - nbins:        number of bins to use for histograms. integer (n==1, same nBins used for all nColumns) or vector (n==nColumns)
 %    - plotMean:     boolean (default 1). Plot mean of histogram as a triangle over the histogram. Scales Y-axis according to ylim_scale
 %    - ylim_scale:   vector [ymin ymax] that is used to scale ylim
@@ -49,7 +50,7 @@ end
 if ~exist('nbins', 'var') && ~exist('bins','var')
     nbins = 15;
 elseif ~exist('nbins', 'var') && exist('bins','var')
-    nbins = length(bins);
+    nbins = length(BinEdges);
 end
 if length(nbins)==1
     nbins = repmat(nbins, 1, nCol);
@@ -81,6 +82,10 @@ end
 if ~exist('histoffset', 'var')
     histoffset = 0;
 end
+if ~exist('histStyle', 'var')
+    histStyle = 'line';
+end
+
 
 if ~exist('LineWidth', 'var')
     LineWidth = 1;
@@ -108,19 +113,43 @@ h = zeros(nCol,1);
 allBins = cell(nCol,1);
 allHist = cell(nCol,1);
 hold on
-for icol = 1:nCol
-    
-    if exist('bins','var')
-        [n,bins] = hist(data{icol}, bins);
-    else
-        [n,bins] = hist(data{icol}, nbins(icol));
-    end
-    [ allBins{icol}, allHist{icol}] = histo_to_bar(bins, n);
-    
-%     histogram(data(:,icol), nbins(icol), 'DisplayStyle', 'stairs')
 
-    h(icol) = plot(allBins{icol}, (allHist{icol}*histscale) + histoffset, 'LineWidth', LineWidth, 'Color', Color(icol,:));
+% concatenate across different columns to find the right binEdges and binWidths
+try
+    h_tmp = histogram( vertcat(data{:}), nbins(1));
+catch
+    h_tmp = histogram( horzcat(data{:}), nbins(1));
+end
+BinEdges = get( h_tmp, 'BinEdges' );
+BinWidth = get( h_tmp, 'BinWidth' );
+delete(h_tmp) % delete this temporary plot
     
+for icol = 1:nCol
+    switch histStyle
+        case 'line'
+            if exist('bins','var')
+                [n,BinEdges] = hist(data{icol}, BinEdges);
+            else
+                [n,BinEdges] = hist(data{icol}, nbins(icol));
+            end
+            [ allBins{icol}, allHist{icol}] = histo_to_bar(BinEdges, n);
+            h(icol) = plot(allBins{icol}, (allHist{icol}*histscale) + histoffset, 'LineWidth', LineWidth, 'Color', Color(icol,:));
+            
+        case 'stairs'
+            h(icol) = histogram(data{icol}, nbins(icol), ...
+                'BinEdges',BinEdges,...
+                'DisplayStyle', histStyle);
+            set( h(icol), 'LineWidth', LineWidth, 'EdgeColor', Color(icol,:) );
+
+            
+        case 'bar'
+            h(icol) = histogram(data{icol}, nbins(icol), ...
+                'BinEdges',BinEdges,...
+                'DisplayStyle', histStyle);
+            set( h(icol), 'FaceColor', Color(icol,:) );
+
+
+    end
 end
 
 YLIM = get(gca, 'ylim');

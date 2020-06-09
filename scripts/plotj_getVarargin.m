@@ -33,6 +33,9 @@ for iarg = 1:2:length(varargin)
     elseif strcmpi(varargin{iarg}, 'x2plot')
         x2plot = varargin{iarg+1}; 
         
+    elseif strcmpi(varargin{iarg}, 'histStyle')
+        histStyle = varargin{iarg+1}; 
+        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %%% Font
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

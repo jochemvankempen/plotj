@@ -1,42 +1,31 @@
-function [h] = plotj_hist(indata, varargin)
-% [h] = plotj_hist(data, varargin)
-%
+function h = plotj_hist(indata, varargin)
 % plots histogram, with line for each column
+% [h] = plotj_hist(data, varargin)
 %
 % Parameters
 % ----------
 % indata : array
 %     array of size (n x nColumns), or cell array
-% varargin : cell with options
+% varargin, cell with options :
 % 
-%    - Color:        Color (rows) for each column of data 
-%    - EdgeAlpha:    Alpha values of edges
-%    - EdgeColor:    Color values of edges
-%    - FaceAlpha:    Alpha values of face or bars
-%    - FaceAlpha:    Color values of face or bars
-%    - histscale:    Scale the histogram
 %    - histStyle:    string with style of histogram: 'stairs' (default) or 'bar'
-%    - LineWidth:    (default 1)
-%    - Marker:       (default 'v')
-%    - MarkerSize:   (default 6)
 %    - nbins:        number of bins to use for histograms. integer (n==1, same nBins used for all nColumns) or vector (n==nColumns)
 %    - plotMean:     boolean (default 1). Plot mean of histogram as a triangle over the histogram. Scales Y-axis according to ylim_scale
 %    - ylim_scale:   vector [ymin ymax] that is used to scale ylim
+%    - histscale:    Scale the histogram
+%    - Color:        Color (rows) for each column of data
+%    - LineWidth     (default 1)
+%    - Marker        (default 'v')
+%    - MarkerSize    (default 6)
 %
 % 
 % Returns
-% -------
-% h : handle
-%     plot handle for each of the columns/cells of indata
+% h : axis handle
 %
-% 
-% *Dependencies*
-% 
-% - histo_to_bar.m
+% Dependencies:
+%   - histo_to_bar.m
 %
-% 
 % Jochem van Kempen
-% 
 
 
 % get varargin
@@ -118,22 +107,6 @@ else
     end
 end
 
-if ~exist('EdgeAlpha', 'var')
-    EdgeAlpha = 1;
-end
-
-if ~exist('EdgeColor', 'var')
-    EdgeColor = get(gca,'ColorOrder');%
-else
-    if size(EdgeColor,1) < nCol
-        error('EdgeColor : specify at least the same amount of colors as there are columns in data')
-    end
-end
-
-if ~exist('FaceAlpha', 'var')
-    FaceAlpha = 0.6;
-end
-
 if ~exist('FaceColor', 'var')
     FaceColor = get(gca,'ColorOrder');%
 else
@@ -141,6 +114,7 @@ else
         error('FaceColor : specify at least the same amount of colors as there are columns in data')
     end
 end
+
 
 hold on
 %%% get/plot histograms
@@ -174,10 +148,8 @@ for icol = 1:nCol
             h(icol) = histogram(data{icol}, nbins(icol), ...
                 'BinEdges',BinEdges,...
                 'DisplayStyle', histStyle);
-
             set( h(icol), ...
                 'LineWidth', LineWidth, ...
-                'EdgeAlpha', EdgeAlpha, ...
                 'EdgeColor', EdgeColor(icol,:) ...
                 );
 
@@ -188,17 +160,9 @@ for icol = 1:nCol
                 'DisplayStyle', histStyle);
             
             set( h(icol), ...
-                'EdgeAlpha', EdgeAlpha, ...
-                'FaceAlpha', FaceAlpha, ...
                 'EdgeColor', EdgeColor(icol,:), ...
-                'FaceColor', FaceColor(icol,:) ...
+                'FaceColor', FaceColor(icol,:), ...
                 );
-
-            cond1 = all(EdgeColor(icol,:) == FaceColor(icol,:));
-            cond2 = (EdgeAlpha == FaceAlpha);
-            if  cond1 && cond2
-                set( h(icol), 'LineStyle', 'none')
-            end
 
 
     end

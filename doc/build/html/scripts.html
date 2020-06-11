@@ -149,15 +149,105 @@
   <div class="section" id="scripts">
 <h1>scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h1>
 <dl class="mat function">
+<dt id="plotj.scripts.plotj_brokenVector">
+<code class="sig-prename descclassname">plotj.scripts.</code><code class="sig-name descname">plotj_brokenVector</code><span class="sig-paren">(</span><em class="sig-param">xData</em>, <em class="sig-param">yData</em>, <em class="sig-param">idx</em>, <em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#plotj.scripts.plotj_brokenVector" title="Permalink to this definition">¶</a></dt>
+<dd><p>h = plotBrokenVector(xData, yData, idx, plSettings)</p>
+<p>function to plot parts of a vector, e.g. for significance values in a time plot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xData</strong> (<em>array</em>) – data on x-axis, e.g. time values</p></li>
+<li><p><strong>yData</strong> (<em>array</em>) – data on y-axis</p></li>
+<li><p><strong>idx</strong> (<em>array</em>) – vector of booleans of same length as x and y. Where idx is 1, it will plot yData</p></li>
+<li><p><strong>varargin</strong> (<em>cell</em>) – cell array with options: ‘color’, ‘linewidth’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>h</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>handle to line</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat function">
 <dt id="plotj.scripts.plotj_cfg">
 <code class="sig-prename descclassname">plotj.scripts.</code><code class="sig-name descname">plotj_cfg</code><span class="sig-paren">(</span><em class="sig-param">cfg</em><span class="sig-paren">)</span><a class="headerlink" href="#plotj.scripts.plotj_cfg" title="Permalink to this definition">¶</a></dt>
 <dd><p>set default settings for plots</p>
 </dd></dl>
 
 <dl class="mat function">
+<dt id="plotj.scripts.plotj_errorBar">
+<code class="sig-prename descclassname">plotj.scripts.</code><code class="sig-name descname">plotj_errorBar</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#plotj.scripts.plotj_errorBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>plot barplot with errorbar</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>array</em>) – array of size (n x columns)</p></li>
+<li><p><strong>varargin</strong> (<em>cell, with options</em>) – <ul>
+<li><p>x2plot: limit columns to specified range</p></li>
+<li><p>plotscatter: boolean (default false). If true, plots scatter of</p></li>
+</ul>
+<p>individual subjects across barplot.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>hbar</strong> (<em>bar handle</em>)</p></li>
+<li><p><strong>herror</strong> (<em>error handle</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat function">
 <dt id="plotj.scripts.plotj_getVarargin">
 <code class="sig-prename descclassname">plotj.scripts.</code><code class="sig-name descname">plotj_getVarargin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plotj.scripts.plotj_getVarargin" title="Permalink to this definition">¶</a></dt>
 <dd><p>unpack varargin into separate variables</p>
+</dd></dl>
+
+<dl class="mat function">
+<dt id="plotj.scripts.plotj_hist">
+<code class="sig-prename descclassname">plotj.scripts.</code><code class="sig-name descname">plotj_hist</code><span class="sig-paren">(</span><em class="sig-param">indata</em>, <em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#plotj.scripts.plotj_hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>[h] = plotj_hist(data, varargin)</p>
+<p>plots histogram, with line for each column</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>indata</strong> (<em>array</em>) – array of size (n x nColumns), or cell array</p></li>
+<li><p><strong>varargin</strong> (<em>cell with options</em>) – <ul>
+<li><p>Color:        Color (rows) for each column of data</p></li>
+<li><p>EdgeAlpha:    Alpha values of edges</p></li>
+<li><p>EdgeColor:    Color values of edges</p></li>
+<li><p>FaceAlpha:    Alpha values of face or bars</p></li>
+<li><p>FaceAlpha:    Color values of face or bars</p></li>
+<li><p>histscale:    Scale the histogram</p></li>
+<li><p>histStyle:    string with style of histogram: ‘stairs’ (default) or ‘bar’</p></li>
+<li><p>LineWidth:    (default 1)</p></li>
+<li><p>Marker:       (default ‘v’)</p></li>
+<li><p>MarkerSize:   (default 6)</p></li>
+<li><p>nbins:        number of bins to use for histograms. integer (n==1, same nBins used for all nColumns) or vector (n==nColumns)</p></li>
+<li><p>plotMean:     boolean (default 1). Plot mean of histogram as a triangle over the histogram. Scales Y-axis according to ylim_scale</p></li>
+<li><p>ylim_scale:   vector [ymin ymax] that is used to scale ylim</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>h</strong> – plot handle for each of the columns/cells of indata</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>handle</p>
+</dd>
+</dl>
+<p><em>Dependencies</em></p>
+<ul class="simple">
+<li><p>histo_to_bar.m</p></li>
+</ul>
+<p>Jochem van Kempen</p>
 </dd></dl>
 
 <dl class="mat function">
@@ -169,10 +259,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cfg</strong> (<em>struct</em>) – struct with settings for figure/axes, obtained in plotj_initFig</p></li>
-<li><p><strong>varargin</strong> (<em>cell, with options:</em>) – <ul>
-<li><p>width:       width of figure (default 25), in centimeters.</p></li>
-<li><p>height:      see width (default 20)</p></li>
-<li><p>margin:      margin of page that is kept clear</p></li>
+<li><p><strong>varargin</strong> (<em>cell with options</em>) – <ul>
 <li><p>axlabel:     axis label, either string or numeric (integer indicating place in alphabet (e.g. 3 = c)</p></li>
 <li><p>axlabelDisplacement: displacement (x/y position away from axis)</p></li>
 </ul>
@@ -186,8 +273,14 @@
 <dd class="field-odd"><p>axis handle</p>
 </dd>
 </dl>
-<p>Dependencies:
-- plotj_panelLabel</p>
+<p><em>Dependencies</em></p>
+<ul class="simple">
+<li><p>plotj_panelLabel</p></li>
+</ul>
+<p class="rubric">Example</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">axHandle</span><span class="p">]</span> <span class="p">=</span> <span class="n">plotj_initAx</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="s">&#39;axlabel&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;axlabelDisplacement&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.06</span> <span class="mf">0.02</span><span class="p">])</span>
+</pre></div>
+</div>
 <p>Jochem van Kempen, 2017</p>
 </dd></dl>
 
@@ -198,8 +291,7 @@
 <p>initialises figure</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>varargin</strong> (<em>cell</em>) – <p>cell with options ( for all options see _plotj_getVarargin ) :</p>
-<ul class="simple">
+<dd class="field-odd"><p><strong>varargin</strong> (<em>cell with options</em>) – <ul class="simple">
 <li><p>figNum:      number the figure will have (default is 1)</p></li>
 <li><p>figureType:  ‘Manuscript’ (default), ‘Poster’ (will lead to different font sizes and line width, etc.)</p></li>
 <li><p>width:       width of figure (default 25), in centimeters.</p></li>
@@ -237,6 +329,79 @@
 <dt id="plotj.scripts.plotj_saveFig">
 <code class="sig-prename descclassname">plotj.scripts.</code><code class="sig-name descname">plotj_saveFig</code><span class="sig-paren">(</span><em class="sig-param">figName</em>, <em class="sig-param">figFiletype</em>, <em class="sig-param">figHandle</em><span class="sig-paren">)</span><a class="headerlink" href="#plotj.scripts.plotj_saveFig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Saves figure</p>
+</dd></dl>
+
+<dl class="mat function">
+<dt id="plotj.scripts.plotj_scatter">
+<code class="sig-prename descclassname">plotj.scripts.</code><code class="sig-name descname">plotj_scatter</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#plotj.scripts.plotj_scatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>[h] = plots_scatterHist(data, varargin)</p>
+<p>plots scatterplot</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>array</em>) – array of size (n x columns)</p></li>
+<li><p><strong>varargin</strong> (<em>cell, with options</em>) – <ul>
+<li><p>dataIndex:        Index to subdivide data, e.g. to give different markers to each subject</p></li>
+<li><p>markerSize:       size of markers (default 8)</p></li>
+<li><p>markerLinew:      linewidth of markers</p></li>
+<li><p>markerStyle:      style of markers used, cell array for number of different markers used for indices</p></li>
+<li><p>unityLine:        boolean, if yes (default) plots unit line</p></li>
+<li><p>axislimit:        specify x and ylim. If empty, axis will not be equal</p></li>
+<li><p>MarkerEdgeColor:  Color of markers used, matrix with rows for indices(dataIndex)</p></li>
+<li><p>MarkerFaceColor:  Color of markers used, matrix with rows for indices(dataIndex)</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>h</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>axis handle</p>
+</dd>
+</dl>
+<p><em>Dependencies</em></p>
+<ul class="simple">
+<li><p>plotboxpos.m (<a class="reference external" href="https://www.mathworks.com/matlabcentral/fileexchange/9615-plotboxpos">https://www.mathworks.com/matlabcentral/fileexchange/9615-plotboxpos</a>)</p></li>
+<li><p>histo_to_bar.m</p></li>
+</ul>
+<p>Jochem van Kempen</p>
+</dd></dl>
+
+<dl class="mat function">
+<dt id="plotj.scripts.plotj_scatterHist">
+<code class="sig-prename descclassname">plotj.scripts.</code><code class="sig-name descname">plotj_scatterHist</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">fSet</em>, <em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#plotj.scripts.plotj_scatterHist" title="Permalink to this definition">¶</a></dt>
+<dd><p>plots scatterplot with histogram along axes
+[h] = plots_scatterHist(data, varargin)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>array</em>) – array of size (n x 2)</p></li>
+<li><p><strong>fSet</strong> (<em>struct</em>) – structure with figure settings, from _plotj_initFig</p></li>
+<li><p><strong>varargin</strong> (<em>cell array with options</em>) – <ul>
+<li><p>dataIndex:    Index to subdivide data, e.g. to give different markers to each subject</p></li>
+<li><p>nbins:        number of bins to use for histograms. integer (n=1) or vector (n = 2)</p></li>
+<li><p>markerSize:   size of markers (default 8)</p></li>
+<li><p>markerLinew:  linewidth of markers</p></li>
+<li><p>markerStyle:  style of markers used, cell array for number of different markers used for indices</p></li>
+<li><p>histscale:    Scale the histogram relative to axis size (default 0.25)</p></li>
+<li><p>histoffset:   Offset the histogram relative to axis size (default 0.01)</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>h</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>axis handle</p>
+</dd>
+</dl>
+<p><em>Dependencies</em></p>
+<ul class="simple">
+<li><p>histo_to_bar.m</p></li>
+</ul>
+<p>Jochem van Kempen</p>
 </dd></dl>
 
 </div>

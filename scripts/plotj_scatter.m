@@ -23,10 +23,13 @@ function h = plotj_scatter(data, varargin)
 % -------
 % h : axis handle
 %
-% Dependencies:
-%   - plotboxpos.m (https://www.mathworks.com/matlabcentral/fileexchange/9615-plotboxpos)
-%   - histo_to_bar.m
+% 
+% *Dependencies*
+% 
+% - plotboxpos.m (https://www.mathworks.com/matlabcentral/fileexchange/9615-plotboxpos)
+% - histo_to_bar.m
 %
+% 
 % Jochem van Kempen
 
 % get varargin

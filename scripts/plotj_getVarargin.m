@@ -24,6 +24,21 @@ for iarg = 1:2:length(varargin)
     elseif strcmpi(varargin{iarg}, 'Color')
         Color = varargin{iarg+1};
         
+    elseif strcmpi(varargin{iarg}, 'EdgeAlpha')
+        EdgeAlpha = varargin{iarg+1};
+        
+    elseif strcmpi(varargin{iarg}, 'EdgeColor')
+        EdgeColor = varargin{iarg+1};
+        
+    elseif strcmpi(varargin{iarg}, 'FaceAlpha')
+        FaceAlpha = varargin{iarg+1};
+        
+    elseif strcmpi(varargin{iarg}, 'FaceColor')
+        FaceColor = varargin{iarg+1};
+        
+    elseif strcmpi(varargin{iarg}, 'histStyle')
+        histStyle = varargin{iarg+1}; 
+        
     elseif strcmpi(varargin{iarg}, 'plotMean')
         plotMean = varargin{iarg+1};
         
@@ -33,17 +48,14 @@ for iarg = 1:2:length(varargin)
     elseif strcmpi(varargin{iarg}, 'x2plot')
         x2plot = varargin{iarg+1}; 
         
-    elseif strcmpi(varargin{iarg}, 'histStyle')
-        histStyle = varargin{iarg+1}; 
-        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %%% Font
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    elseif strcmpi(varargin{iarg}, 'FontSize')
-        fontsize = varargin{iarg+1};
-        
     elseif strcmpi(varargin{iarg}, 'boldface')
         boldface = varargin{iarg+1};
+        
+    elseif strcmpi(varargin{iarg}, 'FontSize')
+        fontsize = varargin{iarg+1};
         
     elseif strcmpi(varargin{iarg}, 'italic')
         italic = varargin{iarg+1};
@@ -51,6 +63,10 @@ for iarg = 1:2:length(varargin)
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %%% axes
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        
+    elseif strcmpi(varargin{iarg}, 'axislimit')
+        axislimit = varargin{iarg+1};
+    
     elseif strcmpi(varargin{iarg}, 'axlabel')
         axlabel = varargin{iarg+1};
         
@@ -68,9 +84,7 @@ for iarg = 1:2:length(varargin)
         
     elseif strcmpi(varargin{iarg}, 'ylim_scale')
         ylim_scale = varargin{iarg+1};
-        
-    elseif strcmpi(varargin{iarg}, 'axislimit')
-        axislimit = varargin{iarg+1};
+
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %%% elements: markers/lines/etc
@@ -109,23 +123,25 @@ for iarg = 1:2:length(varargin)
     elseif strcmpi(varargin{iarg}, 'bins')
         bins = varargin{iarg+1};
         
-    elseif strcmpi(varargin{iarg}, 'nbins')
-        nbins = varargin{iarg+1};
-        
+    elseif strcmpi(varargin{iarg}, 'dataIndex')
+        dataIndex = varargin{iarg+1};
+
     elseif strcmpi(varargin{iarg}, 'histscale')
         histscale = varargin{iarg+1};
         
     elseif strcmpi(varargin{iarg}, 'histoffset')
         histoffset = varargin{iarg+1};
         
-    elseif strcmpi(varargin{iarg}, 'dataIndex')
-        dataIndex = varargin{iarg+1};
-        
-
+    elseif strcmpi(varargin{iarg}, 'nbins')
+        nbins = varargin{iarg+1};
+                
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %%% other
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    elseif strcmpi(varargin{iarg}, 'factorstring')
+        factorstring = varargin{iarg+1};
+        
     elseif strcmpi(varargin{iarg}, 'NA_action')
         NA_action = varargin{iarg+1};
         
@@ -134,9 +150,6 @@ for iarg = 1:2:length(varargin)
         
     elseif strcmpi(varargin{iarg}, 'roundSet')
         roundSet = varargin{iarg+1};
-        
-    elseif strcmpi(varargin{iarg}, 'factorstring')
-        factorstring = varargin{iarg+1};
         
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

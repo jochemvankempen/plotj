@@ -8,8 +8,7 @@ function h = plotj_scatterHist(data, fSet, varargin)
 %     array of size (n x 2)
 % fSet : struct
 %     structure with figure settings, from _plotj_initFig
-% varargin : cell 
-%     cell array with options:
+% varargin : cell array with options
 % 
 %    - dataIndex:    Index to subdivide data, e.g. to give different markers to each subject
 %    - nbins:        number of bins to use for histograms. integer (n=1) or vector (n = 2)
@@ -19,13 +18,17 @@ function h = plotj_scatterHist(data, fSet, varargin)
 %    - histscale:    Scale the histogram relative to axis size (default 0.25)
 %    - histoffset:   Offset the histogram relative to axis size (default 0.01)
 %
+% 
 % Returns
 % -------
 % h : axis handle
 %
-% Dependencies:
-%   - histo_to_bar.m
+% 
+% *Dependencies*
+% 
+% - histo_to_bar.m
 %
+% 
 % Jochem van Kempen
 
 % get varargin

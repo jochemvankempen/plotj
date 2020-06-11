@@ -7,11 +7,8 @@ function [axHandle] = plotj_initAx(cfg, varargin)
 % ----------
 % cfg : struct
 %     struct with settings for figure/axes, obtained in plotj_initFig 
-% varargin : cell, with options:
+% varargin : cell with options
 %
-%     - width:       width of figure (default 25), in centimeters. 
-%     - height:      see width (default 20)
-%     - margin:      margin of page that is kept clear 
 %     - axlabel:     axis label, either string or numeric (integer indicating place in alphabet (e.g. 3 = c)
 %     - axlabelDisplacement: displacement (x/y position away from axis)
 %
@@ -21,8 +18,16 @@ function [axHandle] = plotj_initAx(cfg, varargin)
 % axHandle : axis handle
 %
 % 
-% Dependencies:
+% *Dependencies*
+% 
 % - plotj_panelLabel
+%
+% 
+% Example
+% -------
+% ::
+% 
+%     [axHandle] = plotj_initAx(cfg, 'axlabel', 1, 'axlabelDisplacement', [0.06 0.02])
 %
 % Jochem van Kempen, 2017
  

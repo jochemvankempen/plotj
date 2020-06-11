@@ -5,8 +5,7 @@ function [figHandle, figSet] = plotj_initFig( varargin )
 %
 % Parameters
 % ----------
-% varargin : cell
-%     cell with options ( for all options see _plotj_getVarargin ) :
+% varargin : cell with options
 % 
 %     - figNum:      number the figure will have (default is 1)
 %     - figureType:  'Manuscript' (default), 'Poster' (will lead to different font sizes and line width, etc.)
@@ -30,6 +29,7 @@ function [figHandle, figSet] = plotj_initFig( varargin )
 % 
 %     [figHandle, figSet] = plotj_initFig('height', 25, 'width', 25)
 %
+% 
 % Jochem van Kempen, 2017
 
 % get arguments in varargin

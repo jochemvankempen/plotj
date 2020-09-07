@@ -41,7 +41,7 @@ if exist('figureType','var')
     cfg.figureType = figureType;
 end
 if exist('journal','var')
-    cfg.journal = 'Manuscript';
+    cfg.journal = journal;
 end
 figSet = plotj_cfg( cfg );
 

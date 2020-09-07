@@ -17,6 +17,7 @@ function h = plotj_scatter(data, varargin)
 %     - axislimit:        specify x and ylim. If empty, axis will not be equal
 %     - MarkerEdgeColor:  Color of markers used, matrix with rows for indices(dataIndex)
 %     - MarkerFaceColor:  Color of markers used, matrix with rows for indices(dataIndex)
+%     - MarkerFaceAlpha
 %
 % 
 % Returns

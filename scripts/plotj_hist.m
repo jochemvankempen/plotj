@@ -14,6 +14,7 @@ function [h] = plotj_hist(indata, varargin)
 %    - EdgeColor:    Color values of edges
 %    - FaceAlpha:    Alpha values of face or bars
 %    - FaceAlpha:    Color values of face or bars
+%    - histOffset:   Offset the histogram, only for 'histStyle'=='line
 %    - histscale:    Scale the histogram
 %    - histStyle:    string with style of histogram: 'stairs' (default) or 'bar'
 %    - LineWidth:    (default 1)
@@ -90,13 +91,15 @@ end
 if ~exist('histscale', 'var')
     histscale = 1;
 end
-if ~exist('histoffset', 'var')
-    histoffset = 0;
+if ~exist('histOffset', 'var')
+    histOffset = 0;
 end
 if ~exist('histStyle', 'var')
     histStyle = 'line';
 end
-
+if ~exist('histRotate', 'var')
+    histRotate = 0;
+end
 
 if ~exist('LineWidth', 'var')
     LineWidth = 1;
@@ -168,8 +171,13 @@ for icol = 1:nCol
                 [n,BinEdges] = hist(data{icol}, nbins(icol));
             end
             [ allBins{icol}, allHist{icol}] = histo_to_bar(BinEdges, n);
-            h(icol) = plot(allBins{icol}, (allHist{icol}*histscale) + histoffset, 'LineWidth', LineWidth, 'Color', Color(icol,:));
             
+            if ~histRotate
+                h(icol) = plot(allBins{icol}, (allHist{icol}*histscale) + histOffset, 'LineWidth', LineWidth, 'Color', Color(icol,:));
+                
+            elseif histRotate
+                h(icol) = plot((allHist{icol}*histscale) + histOffset, allBins{icol}, 'LineWidth', LineWidth, 'Color', Color(icol,:));
+            end
         case 'stairs'
             h(icol) = histogram(data{icol}, nbins(icol), ...
                 'BinEdges',BinEdges,...
@@ -219,7 +227,13 @@ if plotMean
         meanHist = nanmean(data{icol});
         
         if plotMean==1
-            plot(meanHist, YLIM(2) * 0.95 * histscale, Marker, 'MarkerSize', MarkerSize, 'MarkerEdgeColor', Color(icol,:), 'MarkerFaceColor', Color(icol,:));
+            hM = plot(meanHist, YLIM(2) * 0.95 * histscale, Marker, 'MarkerSize', MarkerSize, 'MarkerEdgeColor', [EdgeColor(icol,:)], 'MarkerFaceColor', [FaceColor(icol,:)]);
+            drawnow;% Get hidden MarkerHandle property
+            hMarkers = hM.MarkerHandle;
+            hMarkers.FaceColorData = uint8(255*[FaceColor(icol,:)' ; FaceAlpha]);
+            hMarkers.EdgeColorData = uint8(255*[EdgeColor(icol,:)' ; EdgeAlpha]);
+            hMarkers.FaceColorType = 'truecoloralpha';
+            hMarkers.EdgeColorType = 'truecoloralpha';
         elseif plotMean==2
             plot([meanHist meanHist], YLIM, 'Color', Color(icol,:), 'LineWidth', LineWidth);
         end

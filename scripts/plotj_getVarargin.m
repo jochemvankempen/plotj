@@ -130,7 +130,10 @@ for iarg = 1:2:length(varargin)
         histscale = varargin{iarg+1};
         
     elseif strcmpi(varargin{iarg}, 'histoffset')
-        histoffset = varargin{iarg+1};
+        histOffset = varargin{iarg+1};    
+        
+    elseif strcmpi(varargin{iarg}, 'histrotate')
+        histRotate = varargin{iarg+1};
         
     elseif strcmpi(varargin{iarg}, 'nbins')
         nbins = varargin{iarg+1};
@@ -139,6 +142,9 @@ for iarg = 1:2:length(varargin)
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %%% other
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    elseif strcmpi(varargin{iarg}, 'journal')
+        journal = varargin{iarg+1};
+        
     elseif strcmpi(varargin{iarg}, 'factorstring')
         factorstring = varargin{iarg+1};
         

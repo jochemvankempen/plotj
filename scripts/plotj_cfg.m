@@ -2,13 +2,13 @@ function cfg = plotj_cfg(cfg)
 % set default settings for plots
 
 % default settings
-try cfg.figureType,     catch, cfg.figureType = 'Manuscript'; end % set type, ops are Manuscript/Poster
-try cfg.journal,        catch, cfg.journal = 'Nature'; end % set journal
-try cfg.units,          catch, cfg.units = 'centimeters'; end % set units
-try cfg.paperType,      catch, cfg.paperType = 'a4letter'; end % set papertype
-try cfg.transparency,   catch, cfg.transparency = 0.3; end % set transparency
-try cfg.subplotGap,     catch, cfg.subplotGap = [0.1 0.1]; end % subplotGap, argument passed to function subtightplot, defines gap between subplots
-try cfg.subplotMargin,   catch, cfg.subplotMargin = [0.1 0.1]; end % subplotMargin, argument passed to function subtightplot, defines gap between subplots
+try cfg.figureType;     catch, cfg.figureType = 'Manuscript'; end % set type, ops are Manuscript/Poster
+try cfg.journal;        catch, cfg.journal = 'Nature'; end % set journal
+try cfg.units;          catch, cfg.units = 'centimeters'; end % set units
+try cfg.paperType;      catch, cfg.paperType = 'a4letter'; end % set papertype
+try cfg.transparency;   catch, cfg.transparency = 0.3; end % set transparency
+try cfg.subplotGap;     catch, cfg.subplotGap = [0.1 0.1]; end % subplotGap, argument passed to function subtightplot, defines gap between subplots
+try cfg.subplotMargin;   catch, cfg.subplotMargin = [0.1 0.1]; end % subplotMargin, argument passed to function subtightplot, defines gap between subplots
 
 % plot settings
 switch cfg.figureType

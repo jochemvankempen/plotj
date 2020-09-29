@@ -60,21 +60,23 @@ end
 
 if ~exist('x2plot','var') || isempty(x2plot)
     x2plot = 1:length(data);
+elseif max(x2plot)>length(data)
+    data(x2plot) = data;
 end
 
 
 % plot
 hold on
 
-meany = cellfun(@mean, data(x2plot));
-stdy = cellfun(@std, data(x2plot));
-sizey = cellfun(@length, data(x2plot));
+mean_y = cellfun(@mean, data(x2plot));
+std_y = cellfun(@std, data(x2plot));
+size_y = cellfun(@length, data(x2plot));
 
-hbar = bar(x2plot, meany);
+hbar = bar(x2plot, mean_y);
 hbar.FaceColor = FaceColor;
 
 for ix = 1:length(x2plot)
-    herror(ix) = plot([x2plot(ix) x2plot(ix)], meany(ix) + ([-stdy(ix) stdy(ix)])/sqrt(sizey(ix)), 'linew', 2, 'color', 'k');
+    herror(ix) = plot([x2plot(ix) x2plot(ix)], mean_y(ix) + ([-std_y(ix) std_y(ix)])/sqrt(size_y(ix)), 'linew', 2, 'color', 'k');
 
     if plotscatter
         jitterinterval = [-0.1 0.1];

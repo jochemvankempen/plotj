@@ -62,7 +62,7 @@ end
 if ~exist('nbins', 'var') && ~exist('bins','var')
     nbins = 15;
 elseif ~exist('nbins', 'var') && exist('bins','var')
-    nbins = length(BinEdges);
+    nbins = length(bins);
 end
 if length(nbins)==1
     nbins = repmat(nbins, 1, nCol);

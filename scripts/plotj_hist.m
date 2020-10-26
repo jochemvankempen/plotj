@@ -21,7 +21,7 @@ function [h] = plotj_hist(indata, varargin)
 %    - Marker:       (default 'v')
 %    - MarkerSize:   (default 6)
 %    - nbins:        number of bins to use for histograms. integer (n==1, same nBins used for all nColumns) or vector (n==nColumns)
-%    - plotMean:     boolean (default 1). Plot mean of histogram as a triangle over the histogram. Scales Y-axis according to ylim_scale
+%    - plotMean:     boolean (default 1). Plot mean of histogram as 1) a triangle over the histogram or 2) a vertical line. Scales Y-axis according to ylim_scale
 %    - ylim_scale:   vector [ymin ymax] that is used to scale ylim
 %
 % 

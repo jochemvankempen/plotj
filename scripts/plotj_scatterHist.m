@@ -1,4 +1,4 @@
-function h = plotj_scatterHist(data, fSet, varargin)
+function [h, parent] = plotj_scatterHist(data, fSet, varargin)
 % plots scatterplot with histogram along axes
 % [h] = plots_scatterHist(data, varargin)
 %
@@ -16,7 +16,7 @@ function h = plotj_scatterHist(data, fSet, varargin)
 %    - markerLinew:  linewidth of markers
 %    - markerStyle:  style of markers used, cell array for number of different markers used for indices
 %    - histscale:    Scale the histogram relative to axis size (default 0.25)
-%    - histoffset:   Offset the histogram relative to axis size (default 0.01)
+%    - histOffset:   Offset the histogram relative to axis size (default [0.01 0.01])
 %
 % 
 % Returns
@@ -39,6 +39,12 @@ if ~exist('dataIndex', 'var')
 end
 nIndex = length(unique(dataIndex));
 
+if ~exist('MarkerFaceColor','var')
+    MarkerFaceColor = repmat([0 0 0], [nIndex 1]);
+end
+if ~exist('MarkerEdgeColor','var')
+    MarkerEdgeColor = MarkerFaceColor;
+end
 if ~exist('nbins', 'var')
     nbins = [15 15];
 end
@@ -57,10 +63,25 @@ end
 if ~exist('histscale','var')
     histscale = 0.25;
 end
-if ~exist('histoffset','var')
-    histoffset = 0.01;
+if ~exist('histOffset','var')
+    histOffset = [0.01 0.01];
 end
-
+if ~exist('MarkerFaceAlpha','var')
+    MarkerFaceAlpha = ones(nIndex,1);
+else
+    if length(MarkerFaceAlpha) < nIndex
+        MarkerFaceAlpha = repmat(MarkerFaceAlpha, [nIndex, 1]);
+    end
+end
+if ~exist('MarkerEdgeAlpha','var')
+    MarkerEdgeAlpha = MarkerFaceAlpha;
+end
+if ~exist('xlimit','var')
+    xlimit = [];
+end
+if ~exist('ylimit','var')
+    ylimit = [];
+end
 
 %%% get axis position
 parent = ancestor(gca, 'axes');
@@ -77,11 +98,22 @@ pos = plotboxpos(parent);
 for idx = 1:nIndex
     
     %             plot(parent, data(subidx,2), data(subidx,3), subMarker{iSubject_rf}, 'MarkerSize', fSet.MarkerSize/2, 'Color', [0.5 0.5 0.5], 'linew', 1)
-    plot(parent, data(dataIndex==idx,1), data(dataIndex==idx,2), MarkerStyle{idx}, 'MarkerSize', MarkerSize, 'Color', 'k', 'linew', MarkerLinew)
+    %     plot(parent, data(dataIndex==idx,1), data(dataIndex==idx,2), MarkerStyle{idx}, 'MarkerSize', MarkerSize, 'Color', MarkerFaceColor(idx,:), 'linew', MarkerLinew)
+    
+    h(idx) = scatter(parent, data(dataIndex==idx,1), data(dataIndex==idx,2), MarkerSize, ...
+        'MarkerEdgeColor', MarkerEdgeColor(idx,:), 'MarkerFaceColor', MarkerFaceColor(idx,:), 'linew', MarkerLinew);
+    h(idx).MarkerFaceAlpha = MarkerFaceAlpha(idx);
+    h(idx).MarkerEdgeAlpha = MarkerEdgeAlpha(idx);
 end
 
-YLIM = get(gca, 'ylim');
+if ~isempty(xlimit)
+    xlim(xlimit)
+end
+if ~isempty(ylimit)
+    ylim(ylimit)
+end
 XLIM = get(gca, 'xlim');
+YLIM = get(gca, 'ylim');
 
 ylim([YLIM(1)-0.05*YLIM(2) YLIM(2)])
 xlim([XLIM(1)-0.05*XLIM(2) XLIM(2)])
@@ -104,7 +136,7 @@ axhist1 = axes('Position',pos,...
 plotj_initAx(fSet);
 
 %         axhist1.Position = axhist1.Position + [0 (axhist1.Position(4) + histoffset) 0 0];
-axhist1.Position(2) = axhist1.Position(2) + (pos(4) + histoffset);
+axhist1.Position(2) = axhist1.Position(2) + (pos(4) + histOffset(1));
 
 hold on
 plot(axhist1, bins_datax, hist_datax  , 'Color', [0.5 0.5 0.5], 'linew', 1.5)
@@ -127,7 +159,7 @@ plotj_initAx(fSet);
 
 %         axhist2.Position = axhist2.Position + [(axhist2.Position(3) + histoffset) 0 0 0];
 %         axhist2.Position = axhist2.Position + [(axhist2.Position(3) - histoffset) 0 0 0];
-axhist2.Position(1) = parent.Position(1) + (pos(3) + histoffset);
+axhist2.Position(1) = parent.Position(1) + (pos(3) + histOffset(2));
 
 plot(axhist2, hist_datay, bins_datay, 'Color', [0.5 0.5 0.5], 'linew', 1.5)
 xlim(XLIM)

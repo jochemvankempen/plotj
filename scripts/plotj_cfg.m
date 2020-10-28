@@ -16,20 +16,29 @@ switch cfg.figureType
         
         %%% axes
         cfg.LineWidth_ax     = 1.5;
-        
+%         
+%         %%% font
+%         cfg.Fontsize_ax      = 11; % ticks
+%         cfg.Fontsize_ax_in   = 6; % ticks inset
+%         cfg.Fontsize_text    = 12; % labels/legends
+%         cfg.Fontsize_text_in = 10; % inside plot text
+%         cfg.Fontsize_title   = 13; % labels/legends
+%         cfg.Fontsize_panel   = 16; % panel label, e.g. Figure 1 panel A
+%         cfg.Fontsize_sigStar = 16; % significance stars
+
         %%% font
-        cfg.Fontsize_ax      = 11; % ticks
-        cfg.Fontsize_ax_in   = 6; % ticks inset
-        cfg.Fontsize_text    = 12; % labels/legends
-        cfg.Fontsize_text_in = 10; % inside plot text
-        cfg.Fontsize_title   = 13; % labels/legends
-        cfg.Fontsize_panel   = 16; % panel label, e.g. Figure 1 panel A
-        cfg.Fontsize_sigStar = 16; % significance stars
-        
+        cfg.Fontsize_ax      = 7; % ticks
+        cfg.Fontsize_ax_in   = 5; % ticks inset
+        cfg.Fontsize_text    = 8; % labels/legends
+        cfg.Fontsize_text_in = 7; % inside plot text
+        cfg.Fontsize_title   = 10; % labels/legends
+        cfg.Fontsize_panel   = 12; % panel label, e.g. Figure 1 panel A
+        cfg.Fontsize_sigStar = 12; % significance stars
+
         %%% plots
-        cfg.LineWidth        = 2.5;% main plots
-        cfg.LineWidth_in     = 1.5;% insets
-        cfg.MarkerSize       = 8;
+        cfg.LineWidth        = 1.5;% main plots
+        cfg.LineWidth_in     = 1;% insets
+        cfg.MarkerSize       = 4;
         
     case 'Poster'
 

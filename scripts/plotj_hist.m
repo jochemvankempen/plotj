@@ -110,7 +110,7 @@ if ~exist('Marker', 'var')
 end
 
 if ~exist('MarkerSize', 'var')
-    MarkerSize = 8;
+    MarkerSize = 4;
 end
 
 if ~exist('Color', 'var')

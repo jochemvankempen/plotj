@@ -43,9 +43,15 @@ end
 if exist('journal','var')
     cfg.journal = journal;
 end
+if exist('subplotGap','var')
+    cfg.subplotGap = subplotGap;
+end
+if exist('subplotMargin','var')
+    cfg.subplotMargin = subplotMargin;
+end
 figSet = plotj_cfg( cfg );
 
-
+% set default param
 if ~exist('figNum','var')
     figNum = 1;
 end
@@ -55,6 +61,7 @@ end
 if ~exist('height','var')
     height = 20;
 end
+
 
 figHandle = figure(figNum);clf
 set(figHandle, 'Units', figSet.units);

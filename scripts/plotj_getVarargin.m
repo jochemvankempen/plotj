@@ -76,6 +76,12 @@ for iarg = 1:2:length(varargin)
     elseif strcmpi(varargin{iarg}, 'labelCase')
         labelCase = varargin{iarg+1};
         
+    elseif strcmpi(varargin{iarg}, 'subplotGap')
+        subplotGap = varargin{iarg+1};
+    
+    elseif strcmpi(varargin{iarg}, 'subplotMargin')
+        subplotMargin = varargin{iarg+1};
+
     elseif strcmpi(varargin{iarg}, 'xlimit')
         xlimit = varargin{iarg+1};
         

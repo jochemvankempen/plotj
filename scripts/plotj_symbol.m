@@ -25,6 +25,8 @@ switch in
         out = char(948);
     case 'Delta'
         out = char(916);
+    case 'degree'
+        out = char(176);
     case 'lambda'
         out = char(955);
     case 'epsilon'

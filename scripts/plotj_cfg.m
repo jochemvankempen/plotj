@@ -31,7 +31,7 @@ switch cfg.figureType
         cfg.Fontsize_ax_in   = 5; % ticks inset
         cfg.Fontsize_text    = 8; % labels/legends
         cfg.Fontsize_text_in = 7; % inside plot text
-        cfg.Fontsize_title   = 10; % labels/legends
+        cfg.Fontsize_title   = 9; % labels/legends
         cfg.Fontsize_panel   = 12; % panel label, e.g. Figure 1 panel A
         cfg.Fontsize_sigStar = 12; % significance stars
 

@@ -41,9 +41,18 @@ nIndex = length(unique(dataIndex));
 
 if ~exist('MarkerFaceColor','var')
     MarkerFaceColor = repmat([0 0 0], [nIndex 1]);
+elseif isempty(MarkerFaceColor)
+    MarkerFaceColor = ones(nIndex, 3);
+elseif length(MarkerFaceColor) < nIndex
+    MarkerFaceColor = repmat(MarkerFaceColor, [nIndex, 1]);
 end
+
 if ~exist('MarkerEdgeColor','var')
     MarkerEdgeColor = MarkerFaceColor;
+elseif isempty(MarkerEdgeColor)
+    MarkerEdgeColor = zeros(nIndex, 3);
+elseif length(MarkerEdgeColor) < nIndex
+    MarkerEdgeColor = repmat(MarkerEdgeColor, [nIndex, 1]);
 end
 if ~exist('nbins', 'var')
     nbins = [15 15];
@@ -52,7 +61,7 @@ if length(nbins)==1
     nbins = [nbins nbins];
 end
 if ~exist('MarkerSize','var')
-    MarkerSize = 8;
+    MarkerSize = 4;
 end
 if ~exist('MarkerLinew','var')
     MarkerLinew = 1.5;
@@ -75,6 +84,10 @@ else
 end
 if ~exist('MarkerEdgeAlpha','var')
     MarkerEdgeAlpha = MarkerFaceAlpha;
+else
+    if length(MarkerEdgeAlpha) < nIndex
+        MarkerEdgeAlpha = repmat(MarkerEdgeAlpha, [nIndex, 1]);
+    end
 end
 if ~exist('xlimit','var')
     xlimit = [];
@@ -100,7 +113,7 @@ for idx = 1:nIndex
     %             plot(parent, data(subidx,2), data(subidx,3), subMarker{iSubject_rf}, 'MarkerSize', fSet.MarkerSize/2, 'Color', [0.5 0.5 0.5], 'linew', 1)
     %     plot(parent, data(dataIndex==idx,1), data(dataIndex==idx,2), MarkerStyle{idx}, 'MarkerSize', MarkerSize, 'Color', MarkerFaceColor(idx,:), 'linew', MarkerLinew)
     
-    h(idx) = scatter(parent, data(dataIndex==idx,1), data(dataIndex==idx,2), MarkerSize, ...
+    h(idx) = scatter(parent, data(dataIndex==idx,1), data(dataIndex==idx,2), MarkerSize, MarkerStyle{idx}, ...
         'MarkerEdgeColor', MarkerEdgeColor(idx,:), 'MarkerFaceColor', MarkerFaceColor(idx,:), 'linew', MarkerLinew);
     h(idx).MarkerFaceAlpha = MarkerFaceAlpha(idx);
     h(idx).MarkerEdgeAlpha = MarkerEdgeAlpha(idx);

@@ -152,7 +152,7 @@ plotj_initAx(fSet);
 axhist1.Position(2) = axhist1.Position(2) + (pos(4) + histOffset(1));
 
 hold on
-plot(axhist1, bins_datax, hist_datax  , 'Color', [0.5 0.5 0.5], 'linew', 1.5)
+plot(axhist1, bins_datax, hist_datax  , 'Color', [0.5 0.5 0.5], 'linew', 1)
 xlim(XLIM)
 ylim(YLIM)
 axis off
@@ -174,7 +174,7 @@ plotj_initAx(fSet);
 %         axhist2.Position = axhist2.Position + [(axhist2.Position(3) - histoffset) 0 0 0];
 axhist2.Position(1) = parent.Position(1) + (pos(3) + histOffset(2));
 
-plot(axhist2, hist_datay, bins_datay, 'Color', [0.5 0.5 0.5], 'linew', 1.5)
+plot(axhist2, hist_datay, bins_datay, 'Color', [0.5 0.5 0.5], 'linew', 1)
 xlim(XLIM)
 ylim(YLIM)
 axis off

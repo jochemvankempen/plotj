@@ -15,7 +15,7 @@ switch cfg.figureType
     case 'Manuscript'
         
         %%% axes
-        cfg.LineWidth_ax     = 1.5;
+        cfg.LineWidth_ax     = 1;
 %         
 %         %%% font
 %         cfg.Fontsize_ax      = 11; % ticks

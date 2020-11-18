@@ -42,6 +42,9 @@ for iarg = 1:2:length(varargin)
     elseif strcmpi(varargin{iarg}, 'plotMean')
         plotMean = varargin{iarg+1};
         
+    elseif strcmpi(varargin{iarg}, 'plotMedian')
+        plotMedian = varargin{iarg+1};
+        
     elseif strcmpi(varargin{iarg}, 'unityLine')
         unityLine = varargin{iarg+1};
         
@@ -128,6 +131,9 @@ for iarg = 1:2:length(varargin)
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     elseif strcmpi(varargin{iarg}, 'bins')
         bins = varargin{iarg+1};
+        
+    elseif strcmpi(varargin{iarg}, 'binEdges')
+        binEdges = varargin{iarg+1};
         
     elseif strcmpi(varargin{iarg}, 'dataIndex')
         dataIndex = varargin{iarg+1};

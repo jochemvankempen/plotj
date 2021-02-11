@@ -62,7 +62,7 @@ if ~exist('unityLine','var')
     unityLine = 1;
 end
 if ~exist('MarkerEdgeColor','var')
-    MarkerEdgeColor = [0 0 0];
+    MarkerEdgeColor = repmat([0 0 0],nIndex,1);
 end
 if ~exist('MarkerFaceColor','var')
     MarkerFaceColor = repmat('none',nIndex,1);
@@ -121,11 +121,15 @@ for idx = 1:nIndex
     %             plot(parent, data(subidx,2), data(subidx,3), subMarker{iSubject_rf}, 'MarkerSize', fSet.MarkerSize/2, 'Color', [0.5 0.5 0.5], 'linew', 1)
     if MarkerFaceAlpha(idx)~=0    
         if all(MarkerEdgeColor(idx,:) == MarkerFaceColor(idx,:))
-            h(idx) = scatter(parent, data(dataIndex==idx,1), data(dataIndex==idx,2), MarkerSize, ...
-                'filled', 'MarkerFaceColor', MarkerFaceColor(idx,:), 'linew', MarkerLinew);
+            h(idx) = scatter(parent, data(dataIndex==idx,1), data(dataIndex==idx,2), ...
+                MarkerSize, MarkerStyle{idx}, ...
+                'filled', 'MarkerFaceColor', MarkerFaceColor(idx,:), ...
+                'linew', MarkerLinew);
         else
-            h(idx) = scatter(parent, data(dataIndex==idx,1), data(dataIndex==idx,2), MarkerSize, ...
-                'MarkerEdgeColor', MarkerEdgeColor(idx,:), 'MarkerFaceColor', MarkerFaceColor(idx,:), 'linew', MarkerLinew);
+            h(idx) = scatter(parent, data(dataIndex==idx,1), data(dataIndex==idx,2), ...
+                MarkerSize, MarkerStyle{idx}, ...
+                'MarkerEdgeColor', MarkerEdgeColor(idx,:), 'MarkerFaceColor', MarkerFaceColor(idx,:), ...
+                'linew', MarkerLinew);
         end
         h(idx).MarkerFaceAlpha = MarkerFaceAlpha(idx);
         h(idx).MarkerEdgeAlpha = MarkerEdgeAlpha(idx);

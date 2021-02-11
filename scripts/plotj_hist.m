@@ -153,10 +153,14 @@ allHist = cell(nCol,1);
 hold on
 
 % concatenate across different columns to find the right binEdges and binWidths
-try
-    h_tmp = histogram( vertcat(data{:}), nbins(1));
-catch
-    h_tmp = histogram( horzcat(data{:}), nbins(1));
+if exist('bins','var')
+    h_tmp = histogram( vertcat(data{:}), 'BinEdges', bins);
+else
+    try
+        h_tmp = histogram( vertcat(data{:}), nbins(1));
+    catch
+        h_tmp = histogram( horzcat(data{:}), nbins(1));
+    end
 end
 BinEdges = get( h_tmp, 'BinEdges' );
 BinWidth = get( h_tmp, 'BinWidth' );

@@ -41,9 +41,18 @@ nIndex = length(unique(dataIndex));
 
 if ~exist('MarkerFaceColor','var')
     MarkerFaceColor = repmat([0 0 0], [nIndex 1]);
+elseif isempty(MarkerFaceColor)
+    MarkerFaceColor = ones(nIndex, 3);
+elseif length(MarkerFaceColor) < nIndex
+    MarkerFaceColor = repmat(MarkerFaceColor, [nIndex, 1]);
 end
+
 if ~exist('MarkerEdgeColor','var')
     MarkerEdgeColor = MarkerFaceColor;
+elseif isempty(MarkerEdgeColor)
+    MarkerEdgeColor = zeros(nIndex, 3);
+elseif length(MarkerEdgeColor) < nIndex
+    MarkerEdgeColor = repmat(MarkerEdgeColor, [nIndex, 1]);
 end
 if ~exist('nbins', 'var')
     nbins = [15 15];
@@ -52,7 +61,7 @@ if length(nbins)==1
     nbins = [nbins nbins];
 end
 if ~exist('MarkerSize','var')
-    MarkerSize = 8;
+    MarkerSize = 4;
 end
 if ~exist('MarkerLinew','var')
     MarkerLinew = 1.5;
@@ -143,7 +152,7 @@ plotj_initAx(fSet);
 axhist1.Position(2) = axhist1.Position(2) + (pos(4) + histOffset(1));
 
 hold on
-plot(axhist1, bins_datax, hist_datax  , 'Color', [0.5 0.5 0.5], 'linew', 1.5)
+plot(axhist1, bins_datax, hist_datax  , 'Color', [0.5 0.5 0.5], 'linew', 1)
 xlim(XLIM)
 ylim(YLIM)
 axis off
@@ -165,7 +174,7 @@ plotj_initAx(fSet);
 %         axhist2.Position = axhist2.Position + [(axhist2.Position(3) - histoffset) 0 0 0];
 axhist2.Position(1) = parent.Position(1) + (pos(3) + histOffset(2));
 
-plot(axhist2, hist_datay, bins_datay, 'Color', [0.5 0.5 0.5], 'linew', 1.5)
+plot(axhist2, hist_datay, bins_datay, 'Color', [0.5 0.5 0.5], 'linew', 1)
 xlim(XLIM)
 ylim(YLIM)
 axis off

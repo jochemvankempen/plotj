@@ -22,6 +22,7 @@ function [h] = plotj_hist(indata, varargin)
 %    - MarkerSize:   (default 6)
 %    - nbins:        number of bins to use for histograms. integer (n==1, same nBins used for all nColumns) or vector (n==nColumns)
 %    - plotMean:     boolean (default 1). Plot mean of histogram as 1) a triangle over the histogram or 2) a vertical line. Scales Y-axis according to ylim_scale
+%    - plotMedian:   boolean (default 0). Plot median of histogram as 1) a triangle over the histogram or 2) a vertical line. Scales Y-axis according to ylim_scale
 %    - ylim_scale:   vector [ymin ymax] that is used to scale ylim
 %
 % 
@@ -70,6 +71,10 @@ end
 
 if ~exist('plotMean', 'var')
     plotMean = 1;
+end
+
+if ~exist('plotMedian', 'var')
+    plotMedian = 0;
 end
 
 if ~exist('xlimit','var')
@@ -156,25 +161,27 @@ hold on
 if exist('bins','var')
     h_tmp = histogram( vertcat(data{:}), 'BinEdges', bins);
 else
-    try
-        h_tmp = histogram( vertcat(data{:}), nbins(1));
-    catch
-        h_tmp = histogram( horzcat(data{:}), nbins(1));
+    if ~exist('binEdges', 'var')
+        try
+            h_tmp = histogram( vertcat(data{:}), nbins(1));
+        catch
+            h_tmp = histogram( horzcat(data{:}), nbins(1));
+        end
     end
 end
-BinEdges = get( h_tmp, 'BinEdges' );
-BinWidth = get( h_tmp, 'BinWidth' );
+binEdges = get( h_tmp, 'BinEdges' );
+binWidth = get( h_tmp, 'BinWidth' );
 delete(h_tmp) % delete this temporary plot
-    
+
 for icol = 1:nCol
     switch histStyle
         case 'line'
             if exist('bins','var')
-                [n,BinEdges] = hist(data{icol}, BinEdges);
+                [n,binEdges] = hist(data{icol}, binEdges);
             else
-                [n,BinEdges] = hist(data{icol}, nbins(icol));
+                [n,binEdges] = hist(data{icol}, nbins(icol));
             end
-            [ allBins{icol}, allHist{icol}] = histo_to_bar(BinEdges, n);
+            [ allBins{icol}, allHist{icol}] = histo_to_bar(binEdges, n);
             
             if ~histRotate
                 h(icol) = plot(allBins{icol}, (allHist{icol}*histscale) + histOffset, 'LineWidth', LineWidth, 'Color', Color(icol,:));
@@ -184,7 +191,7 @@ for icol = 1:nCol
             end
         case 'stairs'
             h(icol) = histogram(data{icol}, nbins(icol), ...
-                'BinEdges',BinEdges,...
+                'BinEdges',binEdges,...
                 'DisplayStyle', histStyle);
 
             set( h(icol), ...
@@ -196,7 +203,7 @@ for icol = 1:nCol
             
         case 'bar'
             h(icol) = histogram(data{icol}, nbins(icol), ...
-                'BinEdges',BinEdges,...
+                'BinEdges',binEdges,...
                 'DisplayStyle', histStyle);
             
             set( h(icol), ...
@@ -219,7 +226,7 @@ end
 YLIM = get(gca, 'ylim');
 XLIM = get(gca, 'xlim');
 
-if plotMean
+if plotMean || plotMedian
     if isempty(ylimit)
         ylim(YLIM .* ylim_scale)
     else
@@ -228,9 +235,12 @@ if plotMean
     YLIM = get(gca, 'ylim');
         
     for icol = 1:nCol
-        meanHist = nanmean(data{icol});
-        
-        if plotMean==1
+        if plotMedian
+            meanHist = nanmedian(data{icol});
+        else
+            meanHist = nanmean(data{icol});
+        end
+        if (plotMean==1 || plotMedian==1)
             hM = plot(meanHist, YLIM(2) * 0.95 * histscale, Marker, 'MarkerSize', MarkerSize, 'MarkerEdgeColor', [EdgeColor(icol,:)], 'MarkerFaceColor', [FaceColor(icol,:)]);
             drawnow;% Get hidden MarkerHandle property
             hMarkers = hM.MarkerHandle;
@@ -238,7 +248,7 @@ if plotMean
             hMarkers.EdgeColorData = uint8(255*[EdgeColor(icol,:)' ; EdgeAlpha]);
             hMarkers.FaceColorType = 'truecoloralpha';
             hMarkers.EdgeColorType = 'truecoloralpha';
-        elseif plotMean==2
+        elseif (plotMean==2 || plotMedian==2)
             plot([meanHist meanHist], YLIM, 'Color', Color(icol,:), 'LineWidth', LineWidth);
         end
     end

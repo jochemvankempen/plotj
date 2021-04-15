@@ -13,3 +13,6 @@
 [submodule "src/modules/scalebar"]
 	path = src/modules/scalebar
 	url = https://github.com/chenxinfeng4/scalebar.git
+[submodule "src/modules/violinplot"]
+	path = src/modules/violinplot
+	url = https://github.com/bastibe/Violinplot-Matlab.git

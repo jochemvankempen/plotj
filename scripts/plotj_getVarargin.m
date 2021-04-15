@@ -125,6 +125,9 @@ for iarg = 1:2:length(varargin)
     elseif strcmpi(varargin{iarg}, 'MarkerFaceAlpha')
         MarkerFaceAlpha = varargin{iarg+1};
         
+    elseif strcmpi(varargin{iarg}, 'plotscatter')
+        plotscatter = varargin{iarg+1};
+            
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %%% data
@@ -174,7 +177,7 @@ for iarg = 1:2:length(varargin)
         %%% otherwise
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     else
-        warning('Unknown parameter %s, varargin', varargin{iarg})
+      warning('Unknown parameter %s, varargin', varargin{iarg})
         if isnumeric(varargin{iarg+1}) % numeric
             eval([varargin{iarg} ' = [' num2str(varargin{iarg+1}) '];'])
         elseif ischar(varargin{iarg+1}) % strings

@@ -80,8 +80,8 @@ for ix = 1:length(x2plot)
 
     if plotscatter
         jitterinterval = [-0.1 0.1];
-        jitterx = jitterinterval(1) + (diff(jitterinterval)).*rand(y,1);
-        hscatter = plot( repmat(x2plot(ix), y, 1) + jitterx, data(:,ix), '.', 'Color', Color);
+        jitterx = jitterinterval(1) + (diff(jitterinterval)).*rand(size_y(ix),1);
+        hscatter = plot( repmat(x2plot(ix), size_y(ix), 1) + jitterx, data{ix}, '.', 'Color', Color);
         
     end
 end

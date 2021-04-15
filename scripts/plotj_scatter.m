@@ -63,15 +63,23 @@ if ~exist('unityLine','var')
 end
 if ~exist('MarkerEdgeColor','var')
     MarkerEdgeColor = repmat([0 0 0],nIndex,1);
+elseif size(MarkerEdgeColor,1)~=nIndex
+    MarkerEdgeColor = repmat(MarkerEdgeColor,[nIndex,1]);
 end
 if ~exist('MarkerFaceColor','var')
     MarkerFaceColor = repmat('none',nIndex,1);
+elseif size(MarkerFaceColor,1)~=nIndex
+    MarkerFaceColor = repmat(MarkerFaceColor,[nIndex,1]);
 end
 if ~exist('MarkerEdgeAlpha','var')
     MarkerEdgeAlpha = zeros(nIndex,1);
+elseif size(MarkerEdgeAlpha,1)~=nIndex
+    MarkerEdgeAlpha = repmat(MarkerEdgeAlpha,[nIndex,1]);
 end
 if ~exist('MarkerFaceAlpha','var')
     MarkerFaceAlpha = zeros(nIndex,1);
+elseif size(MarkerFaceAlpha,1)~=nIndex
+    MarkerFaceAlpha = repmat(MarkerFaceAlpha,[nIndex,1]);
 end
 
 

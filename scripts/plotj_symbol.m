@@ -33,6 +33,8 @@ switch in
         out = char(949);
     case 'pi'
         out = char(960);
+    case 'pm' %  plusminus
+        out = char(177);
 end
 
 if italic

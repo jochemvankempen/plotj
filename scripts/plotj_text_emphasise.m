@@ -21,6 +21,9 @@ function plotj_text_emphasise(h_text, index, type, idx_cell)
 if nargin<4
     idx_cell = 1;
 end
+if islogical(idx_cell)
+    idx_cell = find(idx_cell);
+end
 
 % check sizes
 text_sizes = size(h_text);
@@ -46,18 +49,22 @@ for iel = 1:numel(h_text)
         % change font or string of relevant cell
         switch type
             case 'bold'
-                tmp_string(idx_cell) = {['\bf' tmp_string{idx_cell}]};
-                                
+                for icell = 1:length(idx_cell)
+                    tmp_string(idx_cell(icell)) = {['{\bf' tmp_string{idx_cell(icell)} '}']};
+                end
             case 'italic'
-                tmp_string(idx_cell) = {['\it' tmp_string{idx_cell}]};
-
+                for icell = 1:length(idx_cell)                        
+                    tmp_string(idx_cell(icell)) = {['{\it' tmp_string{idx_cell(icell)} '}']};
+                end
             case 'star'
-                tmp_string(idx_cell) = {[tmp_string{idx_cell} '*']};
-                
+                for icell = 1:length(idx_cell)
+                    tmp_string(idx_cell(icell)) = {[tmp_string{idx_cell(icell)} '*']};
+                end
             otherwise
                 % non-standard functionality, append string with type
-                tmp_string(idx_cell) = {[tmp_string{idx_cell} type]};
-                
+                for icell = 1:length(idx_cell)
+                    tmp_string(idx_cell(icell)) = {[tmp_string{idx_cell(icell)} type]};
+                end
         end
         
         % set handle with updated string
